@@ -244,3 +244,27 @@ class UserServiceIntegrationTest {
 }
 
 ```
+
+---
+
+# **AssertJ**
+
+### Pourquoi l'utiliser ?
+
+- ✅ Syntaxe naturelle et fluide
+- ✅ Messages d'erreurs détaillés
+- ✅ Plus d'assertions disponibles
+- ✅ Code plus lisible et maintenable
+
+```java
+// JUnit 5
+assertEquals(2, users.size());
+assertEquals("alice", users.getFirst().name());
+assertEquals("bob", users.get(1).name());
+
+// AssertJ
+assertThat(users)
+    .hasSize(2)
+    .extracting(User::name)
+    .containsExactlyInAnyOrder("alice", "bob");
+```
