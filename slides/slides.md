@@ -247,14 +247,40 @@ class UserServiceIntegrationTest {
 
 ---
 
+# **@SpringJunitConfig**
+
+##### **Principe** : Charger un contexte Spring précis sans démarrer une application SpringBoot
+
+```java
+@SpringJunitConfig(classes = {
+        UserService.class,
+        UserRepository.class
+})
+class UserServiceIntegrationTest {
+
+  @Autowired private UserService userService;
+
+  @MockBean private EmailService emailService;
+
+  @Test
+  void shouldCreateUserWithRealDependencies() {
+    // UserService et UserRepository sont réels
+    // EmailService est mocké
+  }
+}
+
+```
+
+---
+
 # **AssertJ**
 
 ### Pourquoi l'utiliser ?
 
-- ✅ Syntaxe naturelle et fluide
+- ✅ API Fluent
 - ✅ Messages d'erreurs détaillés
-- ✅ Plus d'assertions disponibles
-- ✅ Code plus lisible et maintenable
+- ✅ De nombreuses assertions disponibles
+- ⚠️ Beaucoup de possibilités : faire attention à garder des assertions lisibles
 
 ```java
 // JUnit 5
